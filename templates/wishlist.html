@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+
+{% block title%}
+Wish List
+{% endblock %}
+
+{% block content %}
+{% from "includes/formhelpers.html" import render_field %}
+
+<style>
+  p {
+    margin: 25px;
+    font-size: 200%;
+  }
+
+  table {
+    margin: 25px;
+  }
+  li {
+    display: inline;
+  }
+  tr {
+    margin: 25px;
+  }
+</style>
+
+<h2>Add Book to Wishlist</h2>
+<form method=post>
+  <ul>
+    <li>{{ render_field(form.bookName) }}</li>
+    <li>{{ render_field(form.bookWriter) }}</li>
+    <li>{{ render_field(form.pages) }}</li>
+    <li>{{ render_field(form.publisher) }}</li>
+    <li>{{ render_field(form.pressYear) }}</li>
+    <li>{{ render_field(form.bookType) }}</li>
+  </ul>
+  <button type=submit class="btn btn-primary" action="submit" id="add" name="btn" value="add">
+    Add to Wishlist
+  </button>
+  <!-- TODO: Make the elements inline (listed horizontally)  -->
+</form>
+<br>
+
+<p> Wish List </p>
+
+
+<table class="table is-hoverable">
+
+  <tr>
+    <th>Book Name</th>
+    <th>Author</th>
+    <th>Total Pages</th>
+    <th>Publisher</th>
+    <th>Book Type</th>
+    <th>Press Year</th>
+    <th>Borrower Name</th>
+    <th>Borrower Surname</th>
+  </tr>
+
+
+  {% for item in wishlist %}
+
+    <tr>
+      <form method="POST" action="/wishlist">
+
+          <td >{{ item[0] }}</td>
+          <td >{{ item[1] }}</td>
+          <td >{{ item[2] }}</td>
+          <td >{{ item[3] }}</td>
+          <td >{{ item[4] }}</td>
+          <td >{{ item[5] }}</td>
+
+          <td>{{ render_field(userForm.name) }}</td>
+          <td>{{ render_field(userForm.surname) }}</td>
+
+
+          <td>
+              <button type=submit class="btn btn-primary" action="submit" name="btn" value="removeValue">
+                INTERCHANGED
+              </button>
+              <input type="text" name="bookname" value="{{ item[0] }}" hidden="True">
+              <input type="text" name="author" value="{{ item[1] }}" hidden="True">
+              <input type="text" name="pages" value="{{ item[2] }}" hidden="True">
+              <input type="text" name="publisher" value="{{ item[3] }}" hidden="True">
+              <input type="text" name="type" value="{{ item[4] }}" hidden="True">
+              <input type="text" name="year" value="{{ item[5] }}" hidden="True">
+
+          </td>
+
+
+      </form>
+    </tr>
+
+  {% endfor %}
+
+
+
+</table>
+
+
+{% endblock %}
