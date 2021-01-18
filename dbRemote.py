@@ -4,9 +4,9 @@ from model.user import User
 
 
 class Database:
-    def __init__(self, dbname="daj9gh29vue350", user="crcwonmkxgjemv",
-                    password="c6326c163f00c313adc58d3edc0e8a15db6fb938b9eb6e4468f1d1c6a13b15e7",
-                    host="ec2-46-137-159-254.eu-west-1.compute.amazonaws.com"):
+    def __init__(self, dbname="dbohol5jorvcbc", user="amwcsxlazmbrxe",
+                    password="1d48f7a61a3be515b90320943cd93af638e38b615141c8d25f6125ef6831e121",
+                    host="ec2-79-125-77-37.eu-west-1.compute.amazonaws.com"):
         self.con = psycopg2.connect(database=dbname, user=user, password=password, host=host)
         self.cur = self.con.cursor()
         self.userid = 0
