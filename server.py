@@ -460,7 +460,7 @@ def messages():
 
     return render_template('messages.html', messages = messages, sendMessageForm = sendMessageForm, updateMessageForm=updateMessageForm, sentMessages = sentMessages)
 
-    @app.route('/try',methods = ["GET"])
+    @app.route('/erdem')
     def rty():
         return "This is a stepping to a new world!"
 
