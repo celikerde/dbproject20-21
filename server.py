@@ -460,6 +460,10 @@ def messages():
 
     return render_template('messages.html', messages = messages, sendMessageForm = sendMessageForm, updateMessageForm=updateMessageForm, sentMessages = sentMessages)
 
+    @app.route('/try')
+    def try():
+        return "This is a stepping to a new world!"
+
 
 
 if __name__ == '__main__':
